@@ -1,12 +1,15 @@
 package tfrabaioli.rest.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 
 @Entity
@@ -20,6 +23,17 @@ public class Produto implements Serializable {
 	private String nome;
 	private Double preco;
 	
+	@ManyToMany(mappedBy = "produtos")
+	private List<Categoria> categorias = new ArrayList<>();
+	
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
 	public Produto() {}
 
 	public Produto(Integer id, String nome, Double preco) {
@@ -28,6 +42,8 @@ public class Produto implements Serializable {
 		this.nome = nome;
 		this.preco = preco;
 	}
+	
+	
 
 	public Integer getId() {
 		return id;
