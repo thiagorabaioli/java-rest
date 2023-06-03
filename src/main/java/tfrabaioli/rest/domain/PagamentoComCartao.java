@@ -1,7 +1,10 @@
 package tfrabaioli.rest.domain;
 
+import javax.persistence.Entity;
+
 import tfrabaioli.rest.domain.enums.EstadoPagamento;
 
+@Entity
 public class PagamentoComCartao extends Pagamento {
 	
 	private static final long serialVersionUID = 1L;
